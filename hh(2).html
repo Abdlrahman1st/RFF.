@@ -1,0 +1,329 @@
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="breakpoints" content="width=device-width, initial-scale=1.0">
+  <title>Menu - RFF Food</title>
+  <style>
+
+    body {
+      background-color: whitesmoke;
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+
+      
+
+
+ }
+
+
+
+
+ 
+    header {
+      background-color: #fff;
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+ 
+    }
+    header img {
+      height: 60px;
+      width: 60px;
+      margin-right: 15px;
+    }
+    header h1 {
+      font-size: 25px;
+      margin: 0;
+      color: rgb(36, 250, 16);
+    }
+    .edit button {
+      margin-left: 10px;
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      background-color: white;
+      color: black;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .edit button:hover {
+      background-color: black;
+      color: yellow;
+    }
+
+    .edit img{
+            margin-left: 0px;
+            padding:  0px;
+            font-size: 2px;
+            border: none;
+            cursor: pointer;
+            background-color: white;
+            color: black;
+            transition: background-color 0.3s, color 0.3s;
+        }
+    .wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      padding: 16px;
+
+
+          }
+    
+    .grid-layout {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      width: 100%;
+      margin-top: 16px;
+       }
+
+
+
+@media(max-width: 1200px) {
+        .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  
+}
+
+
+@media (min-width: 960px) and (max-width: 1199px) {
+        .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  
+}
+
+
+
+@media (min-width: 720px) and (max-width: 959px) {
+        .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+@media (min-width: 360px) and (max-width: 719px){
+        .grid-layout {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+      }
+    }
+
+
+  
+
+
+
+    
+    article {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      padding: 16px;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+    article img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+    article h2 {
+      color: #333;
+      margin: 16px 0 8px;
+    }
+    article p {
+      color: #666;
+      margin-bottom: 16px;
+    }
+    article button {
+      padding: 8px 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    article button:hover {
+      background-color: #0056b3;
+    }
+    footer {
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      margin-top: 20px;
+    }
+
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      width: 300px;
+    }
+    .modal-content input {
+      margin: 10px 0;
+      padding: 8px;
+      width: 80%;
+    }
+    .modal-content button {
+      margin-top: 10px;
+      padding: 8px 16px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="c:\Users\Delta Store\Downloads\Your paragraph text.png" alt="RFF Food Logo">
+      <h1>Restaurant for Fast Food</h1>
+    </div>
+    <div class="edit">
+      <button><a href="https://mail.google.com/mail/u/0/?tab=rm&amp;ogbl#inbox" target="_parent">Ask for help</a></button>
+      <img src="c:\Users\Delta Store\Downloads\images.png" height="2px" width="2" id="img">
+    </div>
+  </header>
+  <div class="wrapper">
+    <section class="grid-layout">
+      <!-- الصنف الأول -->
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\download.jpeg" alt="Image 1">
+        <h2>Koshary</h2>
+        <p>Delicious food for your appetite.</p>
+        <button onclick="openModal('Koshary', 50)">Buy</button>
+
+        <div class="modal" id="buyModal">
+          <div class="modal-content">
+            <h3 id="itemName">Item Name</h3>
+            <p>Price per unit: $<span id="itemPrice">0</span></p>
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" min="1" value="1" onchange="updateTotal()">
+            <p>Total Price: $<span id="totalPrice">0</span></p>
+            <button onclick="closeModal()">Confirm</button>
+          </div>
+      </article>
+      <!-- الصنف الثاني -->
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\images.jpeg" alt="Image 2">
+        <h2>Fresh chicken meat</h2>
+        <p>Healthy and fresh meals every day.</p>
+        <button onclick="openModal('Fresh chicken meat', 50)">Buy</button>
+      </article>
+      <!-- الصنف الثالث -->
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\images (1).jpeg" alt="Image 3">
+        <h2>A dessert plate of cake</h2>
+        <p>Enjoy our special desserts.</p>
+        <button onclick="openModal('A dessert plate of cake', 50)">Buy</button>
+      </article>
+      <!-- إضافة الأصناف الجديدة -->
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\images (2).jpeg" alt="Image 4">
+        <h2>Delicious Hamburger</h2>
+        <p>Tasty and juicy hamburger with fresh ingredients.</p>
+        <button onclick="openModal('Delicious Hamburger', 50)">Buy</button>
+      </article>
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\sausage-peppers-pizza-with-parm.jpg" height="200px;" width="200px;" alt="Image 5">
+        <h2>Cheese Pizza</h2>
+        <p>Freshly baked pizza with creamy cheese and toppings.</p>
+        <button onclick="openModal('Cheese Pizza', 50)">Buy</button>
+      </article>
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\download (1).jpeg" alt="Image 6">
+        <h2>Fresh Salad</h2>
+        <p>Healthy and fresh salad with a variety of vegetables.</p>
+        <button onclick="openModal('Fresh Salad', 50)">Buy</button>
+      </article>
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\download (2).jpeg" alt="Image 7">
+        <h2>Crispy Fries</h2>
+        <p>Golden and crispy fries served with sauces.</p>
+        <button onclick="openModal('Crispy Fries', 50)">Buy</button>
+      </article>
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\images (3).jpeg" alt="Image 8">
+        <h2>Spaghetti Pasta</h2>
+        <p>Delicious spaghetti served with fresh tomato sauce.</p>
+        <button onclick="openModal('Spaghetti Pasta', 50)">Buy</button>
+      </article>
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\download (3).jpeg" alt="Image 9">
+        <h2>Hot Dog</h2>
+        <p>A classic hot dog with savory toppings.</p>
+        <button onclick="openModal('Hot Dog', 50)">Buy</button>
+      </article>
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\download (4).jpeg" alt="Image 10">
+        <h2>Grilled Steak</h2>
+        <p>Perfectly grilled steak with delicious sides.</p>
+        <button onclick="openModal('Grilled Steak', 50)">Buy</button>
+      </article>
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\download (5).jpeg" alt="Image 11">
+        <h2>Sushi Rolls</h2>
+        <p>Fresh and flavorful sushi rolls with various fillings.</p>
+        <button onclick="openModal('Sushi Rolls', 50)">Buy</button>
+      </article>
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\download (6).jpeg" alt="Image 12">
+        <h2>Ice Cream</h2>
+        <p>Cold and creamy ice cream with multiple flavors.</p>
+        <button onclick="openModal('Ice Cream', 50)">Buy</button>
+      </article>
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\download (7).jpeg" alt="Image 13">
+        <h2>Fruit Smoothie</h2>
+        <p>Fresh fruit smoothie with a refreshing taste.</p>
+        <button onclick="openModal('Fruit Smoothie', 50)">Buy</button>
+      </article>
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\images (4).jpeg" alt="Image 14">
+        <h2>Fresh Croissant</h2>
+        <p>Flaky, buttery croissant perfect for breakfast.</p>
+        <button onclick="openModal('Fresh Croissant', 50)">Buy</button>
+      </article>
+      <article>
+        <img src="c:\Users\Delta Store\Downloads\images (5).jpeg" alt="Image 15">
+        <h2>Fluffy Pancakes</h2>
+        <p>Soft and fluffy pancakes with syrup and berries.</p>
+        <button onclick="openModal('Fluffy Pancakes', 50)">Buy</button>
+      </article>
+ 
+    </section>
+  </div>
+  
+
+
+  </div>
+
+
+
+
+  <footer>
+    © 2024 Restaurant for Fast Food. All Rights Reserved.
+  </footer>
+
+
+</body>
+</html>
